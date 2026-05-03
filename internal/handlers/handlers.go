@@ -81,7 +81,7 @@ func (api *API) GetWallet(c *gin.Context) {
 	c.JSON(http.StatusOK, wallet)
 }
 
-// 3. GET /wallets/{wallet_id}/stocks/{stock_name}
+// GET /wallets/{wallet_id}/stocks/{stock_name}
 func (api *API) GetWalletStock(c *gin.Context) {
 	walletID := c.Param("wallet_id")
 	stockName := c.Param("stock_name")
@@ -95,7 +95,7 @@ func (api *API) GetWalletStock(c *gin.Context) {
 	c.JSON(http.StatusOK, qty)
 }
 
-// 4. GET /stocks
+// GET /stocks
 func (api *API) GetBankState(c *gin.Context) {
 	stocks, err := api.store.GetBankState(c.Request.Context())
 	if err != nil {
@@ -106,7 +106,7 @@ func (api *API) GetBankState(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"stocks": stocks})
 }
 
-// 5. POST /stocks
+// POST /stocks
 func (api *API) SetBankState(c *gin.Context) {
 	var req models.BankStateRequest // Struktura {stocks: [...]}
 	if err := c.ShouldBindJSON(&req); err != nil {
@@ -122,7 +122,7 @@ func (api *API) SetBankState(c *gin.Context) {
 	c.Status(http.StatusOK)
 }
 
-// 6. GET /log
+// GET /log
 func (api *API) GetAuditLog(c *gin.Context) {
 	logs, err := api.store.GetAuditLog(c.Request.Context())
 	if err != nil {
@@ -137,7 +137,7 @@ func (api *API) GetAuditLog(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"log": logs})
 }
 
-// 7. POST /chaos
+// POST /chaos
 func (api *API) Chaos(c *gin.Context) {
 	os.Exit(1)
 }
