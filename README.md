@@ -56,7 +56,7 @@ Two different pipelining strategies were used based on the context:
 
 ---
 
-## 📡 API Endpoints
+### API Endpoints
 
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
